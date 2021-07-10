@@ -22,7 +22,7 @@ delete_file(output_filename)
   logger.log(letter.upcase)
 
   get_json("https://netapps.ocfl.net/BestJail/Home/getInmates/#{letter}").each do |record|
-    if record['bookingNumber'] != 'PRESENTENCED'
+    if record['inmateName'] != 'PRESENTENCED'
       logger.log("#{record['bookingNumber']}\t#{record['inmateName']}")
 
       get_json("https://netapps.ocfl.net/BestJail/Home/getInmateDetails/#{record['bookingNumber']}").each do |details|
