@@ -7,4 +7,6 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 scraper/logs.txt
-scraper/output.csv
+scraper/charges.csv
+scraper/inmates/
+scraper/mugshots/

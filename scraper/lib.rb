@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'net/http'
+require 'json'
+
 def get_json(url)
   sleep(0.25)
   uri = URI.parse(url)

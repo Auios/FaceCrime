@@ -1,6 +1,6 @@
 require 'time'
 
-require_relative 'lib'
+require_relative '../lib'
 
 class Logger
   def initialize(filename)
