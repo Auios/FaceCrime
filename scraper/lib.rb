@@ -23,3 +23,7 @@ end
 def file_write(filename, text)
   open(filename, 'a') { |f| f.puts(text) }
 end
+
+def ensure_directory(directory)
+  Dir.mkdir(directory) if Dir.exist?(directory)
+end

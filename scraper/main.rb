@@ -5,17 +5,15 @@ require_relative 'lib'
 require_relative 'classes/logger'
 require_relative 'classes/inmate'
 
-directory = 'inmates'
-FileUtils.rm_rf(directory) if File.exists?(directory)
-Dir.mkdir(directory)
+output_directory = 'output'
+FileUtils.rm_rf(output_directory) if File.exists?(output_directory)
+Dir.mkdir(output_directory)
+Dir.mkdir("#{output_directory}/inmates")
+Dir.mkdir("#{output_directory}/mugshots")
 
-directory = 'mugshots'
-FileUtils.rm_rf(directory) if File.exists?(directory)
-Dir.mkdir(directory)
+logger = Logger.new("#{output_directory}/logs.txt")
 
-logger = Logger.new('logs.txt')
-
-output_filename = 'charges.csv'
+output_filename = "#{output_directory}/charges.csv"
 delete_file(output_filename)
 
 ('a'..'z').to_a.each do |letter|
@@ -28,7 +26,7 @@ delete_file(output_filename)
       get_json("https://netapps.ocfl.net/BestJail/Home/getInmateDetails/#{record['bookingNumber']}").each do |details|
         inmate = Inmate.new(details['BOOKING'], details['NAME'], details['GENDER'], details['RACE'], details['BIRTH'])
 
-        File.open("mugshots/#{inmate.booking}.png", 'wb') do |f|
+        File.open("#{output_directory}/mugshots/#{inmate.booking}.png", 'wb') do |f|
           f.write(Base64.decode64(details['IMAGE']))
         end
 

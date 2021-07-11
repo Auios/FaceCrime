@@ -6,7 +6,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-scraper/logs.txt
-scraper/charges.csv
-scraper/inmates/
-scraper/mugshots/
+
+# User defined
+scraper/output/

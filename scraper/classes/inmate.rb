@@ -34,6 +34,6 @@ class Inmate
   end
 
   def save
-    file_write("inmates/#{@booking}.json", to_hash.to_json)
+    file_write("output/inmates/#{@booking}.json", to_hash.to_json)
   end
 end
